@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import DateTimePicker from 'react-datetime-picker';
-import moment, { now } from 'moment';
+import moment from 'moment';
 import Swal from 'sweetalert2';
 
 const customStyles = {
