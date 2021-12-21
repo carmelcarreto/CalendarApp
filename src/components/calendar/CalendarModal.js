@@ -6,7 +6,7 @@ import moment, { now } from 'moment';
 import Swal from 'sweetalert2';
 
 import { uiCloseModal } from '../../actions/ui';
-import { eventAddNew, eventClearActiveEvent } from '../../actions/events';
+import { eventAddNew, eventClearActiveEvent, eventUpdated } from '../../actions/events';
 
 
 const customStyles = {
@@ -94,14 +94,19 @@ export const CalendarModal = () => {
         if(title.trim().length < 2){
             return setTitleValid(false);
         }
-        dispatch(eventAddNew({
-            ...formValues,
-            id: new Date().getTime(),
-            user: {
-                _id: '12345',
-                name: 'Katye'
-            }
-        }));
+
+        if(activeEvent){
+            dispatch( eventUpdated( formValues ))
+        }else{
+            dispatch(eventAddNew({
+                ...formValues,
+                id: new Date().getTime(),
+                user: {
+                    _id: '12345',
+                    name: 'Katye'
+                }
+            }));   
+        }
 
         setTitleValid(true);
         closeModal();
