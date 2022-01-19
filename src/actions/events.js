@@ -1,5 +1,6 @@
 import { types } from "../types/types";
 import { fetchConToken } from "../helpers/fetch";
+import { prepareEvents } from "../helpers/prepareEvents";
 
 export const eventStartAddNew  = (event) => {
     return async(dispatch, getState) => {
@@ -30,7 +31,7 @@ export const eventStartAddNew  = (event) => {
 }
 
 
-export const eventAddNew = (event) => ({
+const eventAddNew = (event) => ({
     type: types.eventAddNew,
     payload: event
 
@@ -42,27 +43,28 @@ export const eventSetActive = (event) => ({
 
 });
 
-export const eventClearActiveEvent = () => ({ type: types.eventClearActiveEvent});
+export const eventClearActiveEvent = () => ({ type: types.eventClearActiveEvent });
+
 
 export const eventUpdated = (event ) => ({
     type: types.eventUpdated,
     payload: event
 });
 
-export const eventDeleted = (event ) => ({
-    type: types.eventDeleted,
-    payload: event
-});
+export const eventDeleted = ( ) => ({ type: types.eventDeleted });
 
 export const eventStartLoading = () => {
+
     return async(dispatch) => {
+
         try {
+         
             const resp = await fetchConToken( 'events' );
             const body = await resp.json();
 
-            const events = body.eventos;
-
-            dispatch( eventLoaded(events))
+            const events = prepareEvents(body.eventos);
+            
+            dispatch( eventLoaded(events) );
 
         } catch (error) {
             console.log(error);
@@ -71,7 +73,7 @@ export const eventStartLoading = () => {
     }
 }
 
-const eventLoaded = (events) => ({
+export const eventLoaded = (events) => ({
     type: types.eventLoaded,
     payload: events
 })

@@ -2,9 +2,10 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useForm } from '../../hooks/useForm';
 import { startLogin, startRegister } from '../../actions/auth';
+import Swal from 'sweetalert2';
 
 import './login.css';
-import Swal from 'sweetalert2';
+
 
 export const LoginScreen = () => {
 
@@ -29,8 +30,7 @@ export const LoginScreen = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
-
-        dispath(startLogin( lEmail, lPassword ));
+        dispath( startLogin( lEmail, lPassword ) );
     }
 
     const handleRegister = (e) => {
