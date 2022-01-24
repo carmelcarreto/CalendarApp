@@ -19,7 +19,11 @@ const customStyles = {
       transform: 'translate(-50%, -50%)',
     },
   };
-Modal.setAppElement('#root');
+
+if(process.env.NODE_ENV !== 'test'){
+    Modal.setAppElement('#root');
+}
+
 
 
 export const CalendarModal = () => {
