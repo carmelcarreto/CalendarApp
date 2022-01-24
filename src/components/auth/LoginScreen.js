@@ -12,8 +12,8 @@ export const LoginScreen = () => {
     const dispath = useDispatch();
 
     const [ formLoginValues, handleLoginInputChange] = useForm({
-        lEmail: 'katcarreto@gmail.com',
-        lPassword: '123456'
+        lEmail: '',
+        lPassword: ''
     });
 
     const [ formRegisterValues, handleRegisterInputChange] = useForm({
@@ -30,6 +30,7 @@ export const LoginScreen = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
+        console.log(lEmail, lPassword);
         dispath( startLogin( lEmail, lPassword ) );
     }
 
