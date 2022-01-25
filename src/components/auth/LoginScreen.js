@@ -30,7 +30,6 @@ export const LoginScreen = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        console.log(lEmail, lPassword);
         dispath( startLogin( lEmail, lPassword ) );
     }
 
@@ -40,7 +39,7 @@ export const LoginScreen = () => {
         if(rPassword1 !== rPassword2){
             return Swal.fire('Error', 'Las contraseñas deben de ser iguales', 'error');
         }
-        console.log('?');
+
         dispath( startRegister(rEmail, rPassword1, rName) );
     }
 
