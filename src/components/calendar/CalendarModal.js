@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
+import moment from 'moment';
 import Modal from 'react-modal';
 import DateTimePicker from 'react-datetime-picker';
-import moment from 'moment';
 import Swal from 'sweetalert2';
 
 import { uiCloseModal } from '../../actions/ui';
@@ -25,18 +26,17 @@ if(process.env.NODE_ENV !== 'test'){
 }
 
 
+const now = moment().minutes(0).seconds(0).add(1, 'hours');//11:04:00
+const nowPlusOne = now.clone().add(1, 'hours');
+
+const initEvent = {
+    title: '',
+    notes: '',
+    start: now.toDate(),
+    and: nowPlusOne.toDate()
+}
 
 export const CalendarModal = () => {
-
-    const now = moment().minutes(0).seconds(0).add(1, 'hours');//11:04:00
-    const nowPlusOne = now.clone().add(1, 'hours');
-    
-    const initEvent = {
-        title: '',
-        notes: '',
-        start: now.toDate(),
-        and: nowPlusOne.toDate()
-    }
 
     const { modalOpen } = useSelector( state => state.ui );
     const { activeEvent } = useSelector( state => state.calendar );
@@ -65,7 +65,7 @@ export const CalendarModal = () => {
         });
     }
 
-    const closeModal = (e) => {
+    const closeModal = () => {
         dispatch(uiCloseModal());
         dispatch(eventClearActiveEvent());
         setFormValues(initEvent);
