@@ -1,5 +1,7 @@
-# Calendar App
+# Calendar App 
+
 In this application I'm using Node, Express, Mongoose, Models, Controllers, Express Middleware, JWT, Passive authentication, Payloads, Encryption, Router, CORS, Token revalidation, as well as the use of MongoDB, MongoAtlas and MongoCompass.
+
 
 # Getting Started with Create React App
 
