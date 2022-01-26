@@ -26,7 +26,7 @@ describe('Pruebas en el helper Fetch', () => {
         const body = await resp.json();
 
         expect(body.msg).toBe('El evento no existe por ese id');
-    })
+    });
 
     
 });

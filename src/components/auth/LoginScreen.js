@@ -17,10 +17,10 @@ export const LoginScreen = () => {
     });
 
     const [ formRegisterValues, handleRegisterInputChange] = useForm({
-        rName: 'Kacm',
-        rEmail: 'katcarreto@gmail.com',
-        rPassword1: '123456',
-        rPassword2: '123456',
+        rName: '',
+        rEmail: '',
+        rPassword1: '',
+        rPassword2: '',
 
     });
 
